@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fairy Tarot Oracle Widget</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8f4ff;
+      color: #4b0082;
+      text-align: center;
+      padding: 30px;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background-color: #e0bbff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    #cardResult {
+      font-size: 22px;
+      padding: 20px;
+      background: #ffffffdd;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px #dcb4ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔮 Fairy Tarot Oracle</h1>
+  <p>Tap the wings below to receive a message from the realm of shimmer and whispers.</p>
+  <button onclick="pullCard()">🧚 Pull a Card</button>
+  <div id="cardResult">Your fairy-guided fortune appears here...</div>
+
+  <script>
+    const cards = [('The Fool', 'Leap before logic, wings of wonder spread — trust the wind.'), ('The Magician', 'You are the wand. Channel and conjure. Fairy dust optional.'), ('The High Priestess', 'Whispers beyond the veil, secrets in the moonlight.'), ('The Empress', 'Blossoms bloom from your touch. Nurture is nectar.'), ('The Emperor', 'Thrones are built with bark and backbone. Rule wisely.'), ('The Hierophant', 'Sacred traditions in a circle of mushrooms.'), ('The Lovers', 'Entangled wings and mirrored hearts.'), ('The Chariot', 'Seize the reins of your unicorn. You know the way.'), ('Strength', 'Gentle fingers tame wild beasts. Power is soft.'), ('The Hermit', 'Glow from within. Fireflies gather near.'), ('Wheel of Fortune', 'Spin the petal, kiss the wind. Trust change.'), ('Justice', 'Balanced wings flutter true. All is accounted.'), ('The Hanged One', 'Cocooned in pause, wings wait to dry.'), ('Death', 'Compost magic. New sprouts beneath ashes.'), ('Temperance', 'Alchemy in dewdrops. Blend your light.'), ('The Devil', 'Trickster binds are glittered chains. Set yourself free.'), ('The Tower', 'Fairy nests fall to rise stronger. Trust the crumble.'), ('The Star', 'Starlight guides dreamflight. Hope returns.'), ('The Moon', 'Reflections in fae pools. Truths shimmer sideways.'), ('The Sun', 'Golden laughter. Radiance without apology.'), ('Judgement', 'Echoes return winged. Rise from the leafpile.'), ('The World', 'Petal to root, all has been kissed. Wholeness rings.'), ('Ace of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 1 dances with wands spirit.'), ('2 of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 2 dances with wands spirit.'), ('3 of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 3 dances with wands spirit.'), ('4 of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 4 dances with wands spirit.'), ('5 of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 5 dances with wands spirit.'), ('6 of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 6 dances with wands spirit.'), ('7 of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 7 dances with wands spirit.'), ('8 of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 8 dances with wands spirit.'), ('9 of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 9 dances with wands spirit.'), ('10 of Wands', 'A tale of fiery inspiration and enchanted motivation. Card 10 dances with wands spirit.'), ('Page of Wands', 'The Page weaves wisdom of fiery inspiration and enchanted motivation — a fairy emissary of wands.'), ('Knight of Wands', 'The Knight weaves wisdom of fiery inspiration and enchanted motivation — a fairy emissary of wands.'), ('Queen of Wands', 'The Queen weaves wisdom of fiery inspiration and enchanted motivation — a fairy emissary of wands.'), ('King of Wands', 'The King weaves wisdom of fiery inspiration and enchanted motivation — a fairy emissary of wands.'), ('Ace of Cups', 'A tale of emotional tides and moonlit longings. Card 1 dances with cups spirit.'), ('2 of Cups', 'A tale of emotional tides and moonlit longings. Card 2 dances with cups spirit.'), ('3 of Cups', 'A tale of emotional tides and moonlit longings. Card 3 dances with cups spirit.'), ('4 of Cups', 'A tale of emotional tides and moonlit longings. Card 4 dances with cups spirit.'), ('5 of Cups', 'A tale of emotional tides and moonlit longings. Card 5 dances with cups spirit.'), ('6 of Cups', 'A tale of emotional tides and moonlit longings. Card 6 dances with cups spirit.'), ('7 of Cups', 'A tale of emotional tides and moonlit longings. Card 7 dances with cups spirit.'), ('8 of Cups', 'A tale of emotional tides and moonlit longings. Card 8 dances with cups spirit.'), ('9 of Cups', 'A tale of emotional tides and moonlit longings. Card 9 dances with cups spirit.'), ('10 of Cups', 'A tale of emotional tides and moonlit longings. Card 10 dances with cups spirit.'), ('Page of Cups', 'The Page weaves wisdom of emotional tides and moonlit longings — a fairy emissary of cups.'), ('Knight of Cups', 'The Knight weaves wisdom of emotional tides and moonlit longings — a fairy emissary of cups.'), ('Queen of Cups', 'The Queen weaves wisdom of emotional tides and moonlit longings — a fairy emissary of cups.'), ('King of Cups', 'The King weaves wisdom of emotional tides and moonlit longings — a fairy emissary of cups.'), ('Ace of Swords', 'A tale of mental clarity and truth-spun winds. Card 1 dances with swords spirit.'), ('2 of Swords', 'A tale of mental clarity and truth-spun winds. Card 2 dances with swords spirit.'), ('3 of Swords', 'A tale of mental clarity and truth-spun winds. Card 3 dances with swords spirit.'), ('4 of Swords', 'A tale of mental clarity and truth-spun winds. Card 4 dances with swords spirit.'), ('5 of Swords', 'A tale of mental clarity and truth-spun winds. Card 5 dances with swords spirit.'), ('6 of Swords', 'A tale of mental clarity and truth-spun winds. Card 6 dances with swords spirit.'), ('7 of Swords', 'A tale of mental clarity and truth-spun winds. Card 7 dances with swords spirit.'), ('8 of Swords', 'A tale of mental clarity and truth-spun winds. Card 8 dances with swords spirit.'), ('9 of Swords', 'A tale of mental clarity and truth-spun winds. Card 9 dances with swords spirit.'), ('10 of Swords', 'A tale of mental clarity and truth-spun winds. Card 10 dances with swords spirit.'), ('Page of Swords', 'The Page weaves wisdom of mental clarity and truth-spun winds — a fairy emissary of swords.'), ('Knight of Swords', 'The Knight weaves wisdom of mental clarity and truth-spun winds — a fairy emissary of swords.'), ('Queen of Swords', 'The Queen weaves wisdom of mental clarity and truth-spun winds — a fairy emissary of swords.'), ('King of Swords', 'The King weaves wisdom of mental clarity and truth-spun winds — a fairy emissary of swords.'), ('Ace of Pentacles', 'A tale of earthly magic and manifested treasures. Card 1 dances with pentacles spirit.'), ('2 of Pentacles', 'A tale of earthly magic and manifested treasures. Card 2 dances with pentacles spirit.'), ('3 of Pentacles', 'A tale of earthly magic and manifested treasures. Card 3 dances with pentacles spirit.'), ('4 of Pentacles', 'A tale of earthly magic and manifested treasures. Card 4 dances with pentacles spirit.'), ('5 of Pentacles', 'A tale of earthly magic and manifested treasures. Card 5 dances with pentacles spirit.'), ('6 of Pentacles', 'A tale of earthly magic and manifested treasures. Card 6 dances with pentacles spirit.'), ('7 of Pentacles', 'A tale of earthly magic and manifested treasures. Card 7 dances with pentacles spirit.'), ('8 of Pentacles', 'A tale of earthly magic and manifested treasures. Card 8 dances with pentacles spirit.'), ('9 of Pentacles', 'A tale of earthly magic and manifested treasures. Card 9 dances with pentacles spirit.'), ('10 of Pentacles', 'A tale of earthly magic and manifested treasures. Card 10 dances with pentacles spirit.'), ('Page of Pentacles', 'The Page weaves wisdom of earthly magic and manifested treasures — a fairy emissary of pentacles.'), ('Knight of Pentacles', 'The Knight weaves wisdom of earthly magic and manifested treasures — a fairy emissary of pentacles.'), ('Queen of Pentacles', 'The Queen weaves wisdom of earthly magic and manifested treasures — a fairy emissary of pentacles.'), ('King of Pentacles', 'The King weaves wisdom of earthly magic and manifested treasures — a fairy emissary of pentacles.')];
+
+    function pullCard() {
+      const index = Math.floor(Math.random() * cards.length);
+      const card = cards[index];
+      document.getElementById('cardResult').innerHTML = 
+        `<strong>${card[0]}</strong><br><em>${card[1]}</em>`;
+    }
+  </script>
+</body>
+</html>
