@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>⚛️ Quantum Heal Code Altar</title>
+<style>
+  body { font-family: 'Georgia', serif; background: #0d0d18; color: #eee; text-align:center; padding:2rem; }
+  input, button { padding:0.6rem; border-radius:5px; border:none; font-size:1rem; }
+  button { background:#5566cc; color:white; cursor:pointer; }
+  button:hover { background:#7788ee; }
+  .result { background:rgba(255,255,255,0.08); margin-top:2rem; padding:1rem; border-radius:10px; }
+  .code { font-size:1.4rem; color:#aaffcc; }
+</style>
+</head>
+<body>
+<h1>⚛️ Quantum Heal Code Altar</h1>
+<p>Enter your symptom:</p>
+<input id="symptom" placeholder="e.g. migraine">
+<button onclick="invokeHealing()">Invoke</button>
+
+<div id="output" class="result" style="display:none;"></div>
+
+<script>
+// === SAMPLE extracted dataset ===
+// Expand this with the full correspondences from your PDFs
+const correspondences = {
+  "migraine": {
+    vibrationCode: "99 51 861",
+    planet: ["Mercury", "Uranus"],
+    sign: ["Virgo", "Aquarius"],
+    house: ["6th", "11th"],
+    bodyPart: "Head / Nerves",
+    element: ["Earth", "Air"],
+    pressurePoint: "GB20 (base of skull)",
+    herb: ["Peppermint", "Skullcap"],
+    colorKey: "Green, Light Yellow; Electric Blue, Aqua",
+    astroPoetry: "Mercury meets Uranus — untangle the lightning in your crown and let stillness fall."
+  },
+  "throat tension": {
+    vibrationCode: "444222",
+    planet: ["Mercury"],
+    sign: ["Taurus"],
+    house: ["2nd"],
+    bodyPart: "Throat",
+    element: ["Earth"],
+    pressurePoint: "CV23 (under chin)",
+    herb: ["Rose petals / rosewater"],
+    colorKey: "Pink, Emerald; Green, Light Yellow",
+    astroPoetry: "Mercury square Mars — speak your truth softly, but let your words carry roses."
+  }
+};
+
+// === Simulated live transit fetch ===
+// Replace this with backend API call to astro-seek scraping for daily sky
+async function fetchTransits() {
+  return { activePlanet: "Mercury", aspect: "square Mars" };
+}
+
+async function invokeHealing() {
+  const symptomInput = document.getElementById("symptom").value.trim().toLowerCase();
+  const output = document.getElementById("output");
+
+  let data = correspondences[symptomInput];
+  
+  // Fuzzy match if exact not found
+  if (!data) {
+    const key = Object.keys(correspondences).find(k => symptomInput.includes(k));
+    if (key) data = correspondences[key];
+  }
+
+  if (!data) {
+    output.innerHTML = `<p>No correspondence found — expand your sacred database.</p>`;
+    output.style.display = "block";
+    return;
+  }
+
+  const transit = await fetchTransits();
+  const poetry = `${data.astroPoetry} Current sky: ${transit.activePlanet} ${transit.aspect}.`;
+
+  output.innerHTML = `
+    <div class="code">Vibration Code: ${data.vibrationCode}</div>
+    <p><strong>Color Key:</strong> ${data.colorKey}</p>
+    <p><strong>Pressure Point:</strong> ${data.pressurePoint}</p>
+    <p><strong>Herbal Charm:</strong> ${data.herb.join(", ")}</p>
+    <p><em>${poetry}</em></p>
+    <small>${data.planet.join(" • ")} • ${data.sign.join(" • ")} • ${data.bodyPart} • Element: ${data.element.join(", ")}</small>
+  `;
+  output.style.display = "block";
+}
+</script>
+</body>
+</html>
